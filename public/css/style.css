@@ -1,4 +1,8 @@
 body {
-    background-color: grey;
+    background-color: white;
     font-family: 'Courier New', Courier, monospace;
+}
+
+.todo-item:hover .trash-icon {
+    display: block;
 }

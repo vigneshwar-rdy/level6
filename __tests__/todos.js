@@ -2,7 +2,6 @@
 /* eslint-disable no-undef */
 const request = require("supertest");
 var cheerio = require("cheerio");
-
 const db = require("../models/index");
 const app = require("../app");
 
@@ -15,8 +14,8 @@ function extractCsrfToken(res) {
 describe("Todo Application", function () {
   //test suite
   beforeAll(async () => {
-    await db.sequelize.sync({ force: true }); //wait for tables to create before tests
-    server = app.listen(4000, () => {}); //to avoid failure when we run our app on same port i.e. 3000   so we changed it to 4000
+    await db.sequelize.sync({ force: true }); 
+    server = app.listen(4000, () => {}); 
     agent = request.agent(server);
   });
 
@@ -39,12 +38,7 @@ describe("Todo Application", function () {
       completed: false,
       _csrf: csrfToken,
     });
-    expect(response.statusCode).toBe(302); //for redirecting we have port number 302 so we should expect 302  (not 200)
-    // expect(response.header["content-type"]).toBe( // for offline posting
-    //   "application/json; charset=utf-8"
-    // );
-    // const parsedResponse = JSON.parse(response.text);
-    // expect(parsedResponse.id).toBeDefined();
+    expect(response.statusCode).toBe(302); 
   });
   
 

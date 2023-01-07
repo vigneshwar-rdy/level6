@@ -20,10 +20,8 @@ module.exports = (sequelize, DataTypes) => {
     static async completedItems() {
       return await Todo.findAll({
         where: {
-          
           completed: true,
         },
-
         order: [["id", "ASC"]],
       });
     }
@@ -36,13 +34,13 @@ module.exports = (sequelize, DataTypes) => {
 
     static async dueLater() {
       return this.findAll({
-        where: { dueDate: { [Op.gt]: new Date()},completed:false   }, //greater than the duedate
+        where: { dueDate: { [Op.gt]: new Date()},completed:false   }, 
         order: [["id", "ASC"]],
       });
     }
     static async overdue() {
       return this.findAll({
-        where: { dueDate: { [Op.lt]: new Date()},completed:false   }, //greater than the duedate
+        where: { dueDate: { [Op.lt]: new Date()},completed:false   }, 
         order: [["id", "ASC"]],
       });
     }
@@ -56,7 +54,6 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     static addTodo({ title, dueDate }) {
-      //refactoring for business logic and we can add a todo at any endpoint
       return this.create({ title: title, dueDate: dueDate, completed: false });
     }
     static async completedItems() {
@@ -64,7 +61,6 @@ module.exports = (sequelize, DataTypes) => {
         where: {
           completed: true,
         },
-
         order: [["id", "ASC"]],
       });
     }
